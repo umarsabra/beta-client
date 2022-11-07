@@ -1,0 +1,8 @@
+.main-menu {
+  display: flex;
+  background-color: gray;
+  flex-direction: column;
+  text-align: right;
+  height: 100vh;
+  width: 200px;
+}
