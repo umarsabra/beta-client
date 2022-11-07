@@ -2,3 +2,6 @@
   display: flex;
   flex-direction: row-reverse;
 }
+.quantity-cell input[type="number"] {
+  max-width: 30px;
+}
