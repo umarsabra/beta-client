@@ -1,7 +1,9 @@
-.cart-view {
-  display: flex;
-  flex-direction: row-reverse;
-}
 .quantity-cell input[type="number"] {
   max-width: 30px;
+}
+
+.cart-container {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
 }

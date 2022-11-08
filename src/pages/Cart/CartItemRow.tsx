@@ -1,5 +1,3 @@
-import React from "react";
-
 import OrderItem from "../../types/OrderItem";
 
 function CartItemRow(order_item: OrderItem) {
