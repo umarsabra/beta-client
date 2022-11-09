@@ -16,11 +16,11 @@ function CartTable(props: Props) {
         <div className="price-cell number-cell">السعر</div>
         <div className="total-price-cell number-cell">الإجمالي</div>
       </div>
-      <div className="cart-table-content table-content">
-        {props.order.orderItems.map((orderItem, index) => (
-          <CartItemRow {...orderItem} />
+      { props.order.order_items ? <div className="cart-table-content table-content">
+        {props.order.order_items.map((order_item, index) => (
+          <CartItemRow {...order_item} key={order_item.id} />
         ))}
-      </div>
+      </div> : <h1>not found</h1>}
     </div>
   );
 }

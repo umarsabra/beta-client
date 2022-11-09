@@ -35,7 +35,7 @@ export const items: Item[] = [
 export const order: Order = {
   id: 1,
   total_price: 24,
-  orderItems: [
+  order_items: [
     {
       id: 1,
       title: "لبن بخيره 500مل",
