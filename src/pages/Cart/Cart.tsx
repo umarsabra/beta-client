@@ -11,7 +11,14 @@ import BarcodeScanner from "../../components/BarcodeScanner";
 function Cart() {
   return (
     <section className="cart-view view">
-      <BarcodeScanner onScan={(e) => console.log(e)} />
+      <BarcodeScanner
+        onScan={(barcode) =>
+          console.log({
+            barcode: barcode,
+            quantity: 1,
+          })
+        }
+      />
       <CartHeader />
       <section className="cart-container">
         <CartTable order={order} />

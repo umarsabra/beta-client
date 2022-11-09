@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 type Props = {
-  onScan: (barcode: number) => void;
+  onScan: (barcode: number) => any;
 };
 
 function BarcodeScanner(props: Props) {

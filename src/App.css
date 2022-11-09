@@ -50,5 +50,6 @@
 
 .barcode-scanner {
   position: absolute;
-  top: -100%;
+  top: 0;
+  transform: translate(-100%);
 }
