@@ -1,3 +1,4 @@
+import OrderService from "../../services/OrderService";
 import OrderItem, { OrderItemCreation } from "../../types/OrderItem";
 import Order from "../../types/OrderType";
 
@@ -7,40 +8,18 @@ type Props = {
 };
 
 function CartItemRow(props: Props) {
-  const deleteOrderItem = async (order_item_id: number) => {
-    const URL =
-      localStorage.getItem("API_URL") + `/orders/pending/${order_item_id}`;
-
-    const updatedOrderReq = await fetch(URL, {
-      method: "DELETE",
-    });
-    const updatedOrder: Order = updatedOrderReq.json() as unknown as Order;
-    return updatedOrder;
-  };
-
-  console.log(props.order_item.barcode);
-
-  const updateOrderItemReq = async (new_order_item: OrderItemCreation) => {
-    const URL = localStorage.getItem("API_URL") + `/orders/pending`;
-    const updatedOrderReq = await fetch(URL, {
-      method: "POST",
-      body: JSON.stringify(new_order_item),
-    });
-    console.log(JSON.stringify(new_order_item));
-    const updatedOrder: Order = updatedOrderReq.json() as unknown as Order;
-    return updatedOrder;
-  };
 
   const updateDeletedOrderItem = async (order_item_id: number) => {
-    const order: Order = await deleteOrderItem(order_item_id);
+    const order: Order = await OrderService.deleteOrderItem(order_item_id);
     props.setOrder(order);
   };
 
   const updateOrderItem = async (new_order_item: OrderItemCreation) => {
-    const order: Order = await updateOrderItemReq({
+    const payload: OrderItemCreation = {
       barcode: new_order_item.barcode,
       quantity: new_order_item.quantity,
-    });
+    }
+    const order: Order = await OrderService.updateOrderItem(payload);
     props.setOrder(order);
   };
 

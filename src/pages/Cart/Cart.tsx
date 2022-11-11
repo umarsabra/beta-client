@@ -6,38 +6,45 @@ import "./styles/Cart.css";
 import CartHeader from "./CartHeader";
 import BarcodeScanner from "../../components/BarcodeScanner";
 import Order from "../../types/OrderType";
+import OrderService from "../../services/OrderService";
+import { OrderItemCreation } from "../../types/OrderItem";
 
 function Cart() {
+
+  
   const initOrder: Order = {
     total_price: 0,
     total_cost: 0,
     order_items: [],
   };
+
+
   const [order, setOrder] = useState(initOrder);
 
   useEffect(() => {
-    const getPendingOrder = async () => {
-      const pendingOrderRes = await fetch(
-        localStorage.getItem("API_URL") + "/orders/pending"
-      );
-      return pendingOrderRes.json();
-    };
-
     const setPendingOrder = async () => {
-      const pendingOrder: Order = await getPendingOrder();
+      const pendingOrder: Order = await OrderService.getPendingOrder();
       setOrder(pendingOrder);
     };
     setPendingOrder();
   }, []);
 
+  const onScan = async (barcode: number) => {
+    const new_order_item: OrderItemCreation = {
+      barcode: barcode,
+      quantity: 1
+    };
+
+    const new_order = await OrderService.addOrderItem(new_order_item);
+    setOrder((order) => new_order)
+  }
+  
+
   return (
     <section className="cart-view view">
       <BarcodeScanner
         onScan={(barcode) =>
-          console.log({
-            barcode: barcode,
-            quantity: 1,
-          })
+          onScan(barcode)
         }
       />
       <CartHeader />

@@ -17,7 +17,7 @@ function CartTable(props: Props) {
         <div className="price-cell number-cell">السعر</div>
         <div className="total-price-cell number-cell">الإجمالي</div>
       </div>
-      {props.order.order_items ? (
+      {props.order.order_items.length !== 0 ? (
         <div className="cart-table-content table-content">
           {props.order.order_items.map((order_item, index) => (
             <CartItemRow
