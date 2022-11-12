@@ -1,20 +1,22 @@
-
-  
 .App {
   display: flex;
-  flex-direction: row-reverse;
   width: 100%;
   height: 100%;
-  }
+}
 
-.view {
-  background-color: lightblue;
+.page-layout {
   display: flex;
   flex: 1;
   width: auto;
   flex-direction: column;
 }
 
+.tab-layout {
+  display: flex;
+  flex: 1;
+  width: auto;
+  flex-direction: row-reverse;
+}
 
 .table {
   display: flex;
@@ -34,7 +36,6 @@
 }
 
 .table-content {
-  background-color: white;
 }
 
 .title-cell {

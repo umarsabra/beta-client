@@ -1,13 +1,11 @@
 import React from "react";
-import "./App.css";
-import { Outlet } from "react-router-dom";
-import Menu from "./components/Menu";
-function App() {
 
-  localStorage.setItem("API_URL", "http://192.168.1.108:8080/api/v1")
+import { Outlet } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+function App() {
   return (
     <div className="App">
-      <Menu />
       <Outlet />
     </div>
   );
