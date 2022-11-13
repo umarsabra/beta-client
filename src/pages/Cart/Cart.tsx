@@ -54,7 +54,7 @@ function Cart() {
     <section className="cart-view view">
       <BarcodeScanner onScan={(barcode) => onScan(barcode)} />
       <CartHeader />
-      <section className="cart-container">
+      <section className="cart-container d-flex flex-row-reverse  justify-content-around">
         <CartTable setOrder={setOrder} order={order} />
         <CartSummary total_price={order.total_price} />
       </section>

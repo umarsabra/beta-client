@@ -1,5 +1,3 @@
-
-
 type Item = {
   title: string;
   quantity: number;
@@ -9,12 +7,13 @@ type Item = {
 };
 
 export type ItemRequest = {
-  title: string;
   barcode: number;
+  title: string;
+  unit_type: string;
+  price_per_unit: number;
   quantity: number;
-  price: number;
-  total_cost: number;
-  is_weight_item: boolean;
-}
+  cost_per_quantity: number;
+  weight_per_quantity: number;
+};
 
 export default Item;

@@ -1,4 +1,5 @@
 import React, { FormEventHandler, useState } from "react";
+import InputGroup from "react-bootstrap/InputGroup";
 import { ItemRequest } from "../types/ItemType";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -6,10 +7,11 @@ function ItemForm() {
   const initItem: ItemRequest = {
     title: "",
     barcode: 0,
-    price: 0,
+    unit_type: "",
+    price_per_unit: 0,
     quantity: 0,
-    total_cost: 0,
-    is_weight_item: false,
+    cost_per_quantity: 0,
+    weight_per_quantity: 0,
   };
 
   const [item, setItem] = useState<ItemRequest>(initItem);
@@ -22,6 +24,7 @@ function ItemForm() {
         [e.target.name]: e.target.value,
       };
     });
+    console.log(item);
   };
 
   return (
@@ -46,23 +49,40 @@ function ItemForm() {
           id=""
         />
       </Form.Group>
-      <Form.Group className="mb-3">
+
+      <InputGroup className="mb-3">
+        <InputGroup.Text>EGP</InputGroup.Text>
         <Form.Control
           // @ts-ignore
           onInput={onFormChange}
           type="number"
-          name="price"
-          placeholder="السعر"
+          name="price_per_unit"
+          placeholder="سعر الوحده"
           id=""
         />
+      </InputGroup>
+      <Form.Group className="mb-3">
+        <Form.Select
+          placeholder="الوحده"
+          name="unit_type"
+          //@ts-ignore
+          onChange={onFormChange}
+        >
+          <option value="PC">قطعة</option>
+          <option value="KG">كيلو</option>
+          <option value="L">لتر</option>
+          <option value="GM">جرام</option>
+          <option value="ML">مل لتر</option>
+        </Form.Select>
       </Form.Group>
+
       <Form.Group className="mb-3">
         <Form.Control
           // @ts-ignore
           onInput={onFormChange}
           type="number"
           name="quantity"
-          placeholder="الكمية"
+          placeholder="العدد"
           id=""
         />
       </Form.Group>
@@ -71,35 +91,22 @@ function ItemForm() {
           // @ts-ignore
           onInput={onFormChange}
           type="number"
-          name="total_cost"
+          name="cost_per_quantity"
           placeholder="إحمالي التكلفة"
           id=""
         />
       </Form.Group>
       <Form.Group className="mb-3">
-        <Form.Label htmlFor="not-weight-item">بالقعة</Form.Label>
-        <Form.Check
+        <Form.Control
           // @ts-ignore
           onInput={onFormChange}
-          type="radio"
-          name="is_weight_item"
-          value="false"
-          defaultChecked
-          id="not-weight-item"
+          type="number"
+          name="weight_per_quantity"
+          placeholder="الوزن"
+          id=""
         />
       </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Label htmlFor="is-weight-item">بالوزن</Form.Label>
-        <Form.Check
-          // @ts-ignore
-          onInput={onFormChange}
-          type="radio"
-          name="is_weight_item"
-          value="true"
-          id="is-weight-item"
-        />
-      </Form.Group>
-      <Button variant="primary">أضف</Button>
+      <Button variant="success">أضف</Button>
     </Form>
   );
 }

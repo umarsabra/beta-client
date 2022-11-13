@@ -10,7 +10,7 @@ type Props = {
 
 function CartTable(props: Props) {
   return (
-    <div className="cart-table table">
+    <div className="cart-table table shadow-sm">
       <div className="cart-table-title table-title table-row">
         <div className="title-cell">العنوان</div>
         <div className="quantity-cell number-cell">الكمية</div>

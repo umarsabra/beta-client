@@ -2,8 +2,8 @@
   max-width: 30px;
 }
 
-.cart-container {
+.cart-view {
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-around;
+  flex-direction: column;
+  flex: 1;
 }
